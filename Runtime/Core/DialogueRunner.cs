@@ -186,6 +186,7 @@ namespace Linxium.Dialogue {
         void CompleteTyping() {
             typeSentenceCTS?.Cancel();
             typeSentenceCTS?.Dispose();
+            typeSentenceCTS = null;
             contentText.maxVisibleCharacters = contentText.text.Length;
             isTyping = false;
             if (HasChoices()) DisplayChoices();
