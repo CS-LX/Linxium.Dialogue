@@ -1,0 +1,19 @@
+{
+    "name": "Linxium.Dialogue",
+    "rootNamespace": "Linxium.Dialogue",
+    "references": [
+        "Linxium.ExtraComponents",
+        "Ink-Libraries",
+        "Unity.TextMeshPro",
+        "UniTask"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}
