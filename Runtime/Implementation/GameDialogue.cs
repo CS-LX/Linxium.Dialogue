@@ -77,5 +77,9 @@ namespace Linxium.Dialogue.Implementation {
             base.OnDispose();
             dialogueRunner.Dispose();
         }
+
+        public virtual void StartDialogue(TextAsset inkAsset, Action onDialogueEnd = null) {
+            dialogueRunner.StartDialogue(inkAsset, onDialogueEnd);
+        }
     }
 }
