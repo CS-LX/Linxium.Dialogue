@@ -49,6 +49,7 @@ namespace Linxium.Dialogue {
         public UnityEvent OnDialogueEndInner = new();
         public UnityEvent<Story> OnBindExternalFunctions = new();
         public UnityEvent<Story> OnUnbindExternalFunctions = new();
+        public UnityEvent<Choice, GameObject> OnChoice = new();
         public bool HasDialogue => currentStory != null;
 
         public void Awake() {
@@ -203,6 +204,7 @@ namespace Linxium.Dialogue {
                 if (btnCanvasGroup == null) btnCanvasGroup = btnObj.AddComponent<CanvasGroup>(); // 保证有CanvasGroup
                 var btnText = btnObj.GetComponentInChildren<TextMeshProUGUI>();
                 btnText.text = localChoice.text;
+                OnChoice.Invoke(localChoice, btnObj);
 
                 // 初始化为隐藏状态
                 btnRect.localScale = Vector3.one * 0.95f;
