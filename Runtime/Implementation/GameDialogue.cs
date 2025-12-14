@@ -65,7 +65,7 @@ namespace Linxium.Dialogue.Implementation {
                 foreach (TMP_Text tmpText in GetComponentsInChildren<TMP_Text>()) {
                     tmpText.font = textFont;
                 }
-                dialogueRunner.OnChoice.AddListener((_, obj) => obj.GetComponent<TextMeshProUGUI>().font = textFont);
+                dialogueRunner.OnChoice.AddListener((_, obj) => obj.GetComponentInChildren<TextMeshProUGUI>().font = textFont);
             }
         }
 
