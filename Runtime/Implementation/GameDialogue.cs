@@ -32,7 +32,7 @@ namespace Linxium.Dialogue.Implementation {
             get => autoOnText;
             set {
                 autoOnText = value;
-                dialogueRunner.autoOnText = value;
+                UpdateUI();
             }
         }
 
@@ -40,7 +40,7 @@ namespace Linxium.Dialogue.Implementation {
             get => autoOffText;
             set {
                 autoOffText = value;
-                dialogueRunner.autoOffText = value;
+                UpdateUI();
             }
         }
 
@@ -69,8 +69,6 @@ namespace Linxium.Dialogue.Implementation {
                 autoNextDelay = autoNextDelay,
                 fadeDuration = fadeDuration,
                 optionPopDelay = optionPopDelay,
-                autoOnText = autoOnText,
-                autoOffText = autoOffText,
                 startStory = startStory,
                 OnDialogueStart = OnDialogueStart,
                 OnDialogueEnd = OnDialogueEnd,
@@ -83,6 +81,7 @@ namespace Linxium.Dialogue.Implementation {
                 }
                 dialogueRunner.OnChoice.AddListener((_, obj) => obj.GetComponentInChildren<TextMeshProUGUI>().font = textFont);
             }
+            UpdateUI();
         }
 
         protected override void OnStart() {
@@ -97,6 +96,10 @@ namespace Linxium.Dialogue.Implementation {
 
         public virtual void StartDialogue(TextAsset inkAsset, Action onDialogueEnd = null) {
             dialogueRunner.StartDialogue(inkAsset, onDialogueEnd);
+        }
+
+        public void UpdateUI() {
+            autoButton.GetComponentInChildren<TMP_Text>().text = dialogueRunner.IsAuto ? autoOnText : autoOffText;
         }
     }
 }

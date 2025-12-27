@@ -31,8 +31,6 @@ namespace Linxium.Dialogue {
         [Header("Animation Settings")]
         public float fadeDuration = 0.3f;
         public float optionPopDelay = 0.05f; // 每个选项弹出间隔
-        public string autoOnText = "自动: 开";
-        public string autoOffText = "自动: 关";
 
         [Header("Others")]
         public TextAsset startStory;
@@ -51,6 +49,7 @@ namespace Linxium.Dialogue {
         public UnityEvent<Story> OnUnbindExternalFunctions = new();
         public UnityEvent<Choice, GameObject> OnChoice = new();
         public bool HasDialogue => currentStory != null;
+        public bool IsAuto => autoLine;
 
         public void Awake() {
             if (dialogueCanvasGroup != null) {
@@ -62,7 +61,6 @@ namespace Linxium.Dialogue {
             autoButton.onClick.AddListener(() => {
                     autoLine = !autoLine;
                     var txt = autoButton.GetComponentInChildren<TMP_Text>();
-                    txt.text = autoLine ? autoOnText : autoOffText;
                     txt.DOFade(1f, 0.25f);
 
                     // 如果此时没有在打字、也没有选项、且对话还在继续 → 立即自动继续
