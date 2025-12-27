@@ -81,6 +81,7 @@ namespace Linxium.Dialogue.Implementation {
                 }
                 dialogueRunner.OnChoice.AddListener((_, obj) => obj.GetComponentInChildren<TextMeshProUGUI>().font = textFont);
             }
+            dialogueRunner.OnToggleAuto.AddListener(UpdateUI);
             UpdateUI();
         }
 
