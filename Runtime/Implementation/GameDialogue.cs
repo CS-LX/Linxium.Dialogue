@@ -28,6 +28,22 @@ namespace Linxium.Dialogue.Implementation {
         public string autoOnText = "自动: 开";
         public string autoOffText = "自动: 关";
 
+        public string AutoOnText {
+            get => autoOnText;
+            set {
+                autoOnText = value;
+                dialogueRunner.autoOnText = value;
+            }
+        }
+
+        public string AutoOffText {
+            get => autoOffText;
+            set {
+                autoOffText = value;
+                dialogueRunner.autoOffText = value;
+            }
+        }
+
         [Header("Others")]
         public TextAsset startStory;
         public TMP_FontAsset textFont;
