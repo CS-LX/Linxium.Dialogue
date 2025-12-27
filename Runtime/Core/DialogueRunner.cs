@@ -45,6 +45,7 @@ namespace Linxium.Dialogue {
         public UnityEvent OnDialogueStart = new();
         public UnityEvent OnDialogueEnd = new();
         public UnityEvent OnDialogueEndInner = new();
+        public UnityEvent OnToggleAuto = new();
         public UnityEvent<Story> OnBindExternalFunctions = new();
         public UnityEvent<Story> OnUnbindExternalFunctions = new();
         public UnityEvent<Choice, GameObject> OnChoice = new();
@@ -70,6 +71,7 @@ namespace Linxium.Dialogue {
                         && currentStory != null
                         && currentStory.canContinue)
                         ContinueStory();
+                    OnToggleAuto.Invoke();
                 }
             );
             backgroundImage.GetComponent<Button>().onClick.AddListener(SkipSentence);
